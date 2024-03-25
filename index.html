@@ -206,16 +206,20 @@
                 <article class="post">
                   <div id="card-task">
                     <p id="demo"></p>
+                    
                     <p id="demo1"></p>
                     <p id="demo2"></p>
                     <script>
-                      document.getElementById('demo').innerHTML = "Javascript Array";
-                      document.getElementById('demo1').innerHTML = "Total Pembayaran ";
+                      const menu_makanan = ["10000" , "25000" , "15000"]
+                      document.getElementById('demo').innerHTML = menu_makanan;
+                      
                       let makanan1 = 10000;
                       let makanan2 = 25000;
                       let makanan3 = 15000;
-                      let total = makanan1 + makanan2 + makanan3 - 10/100 * 50000;
-                      document.getElementById('demo2').innerHTML = total;
+                      let total = makanan1 + makanan2 + makanan3;
+                      let totalpembayaran = total - 10/100 * 50000;
+                      document.getElementById('demo2').innerHTML = "diskon 10% menjadi = " + totalpembayaran;
+                      document.getElementById('demo1').innerHTML = "Total Pembayaran = " + total;   
                     </script>
                   </div>
                   </div>
