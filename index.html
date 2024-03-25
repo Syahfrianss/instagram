@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li>
-                        <i class="lni lni-home"></i>
+                        <i data-feather="home"></i>
                         <span>Home</span>
                     </li>
                     <li>
@@ -204,6 +204,21 @@
             </div>
             <div class="posts">
                 <article class="post">
+                  <div id="card-task">
+                    <p id="demo"></p>
+                    <p id="demo1"></p>
+                    <p id="demo2"></p>
+                    <script>
+                      document.getElementById('demo').innerHTML = "Javascript Array";
+                      document.getElementById('demo1').innerHTML = "Total Pembayaran ";
+                      let makanan1 = 10000;
+                      let makanan2 = 25000;
+                      let makanan3 = 15000;
+                      let total = makanan1 + makanan2 + makanan3 - 10/100 * 50000;
+                      document.getElementById('demo2').innerHTML = total;
+                    </script>
+                  </div>
+                  </div>
                     <div class="header-post">
                         <div class="avatar-profile">
                             <img src="images/profile-avatar.jpg" alt="">
@@ -400,5 +415,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous"></script>
+    <!-- choose one -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace();
+    </script>
 </body>
 </html>
