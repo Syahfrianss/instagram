@@ -204,25 +204,6 @@
             </div>
             <div class="posts">
                 <article class="post">
-                  <div id="card-task">
-                    <p id="demo"></p>
-                    
-                    <p id="demo1"></p>
-                    <p id="demo2"></p>
-                    <script>
-                      const menu_makanan = ["10000" , "25000" , "15000"]
-                      document.getElementById('demo').innerHTML = menu_makanan;
-                      
-                      let makanan1 = 10000;
-                      let makanan2 = 25000;
-                      let makanan3 = 15000;
-                      let total = makanan1 + makanan2 + makanan3;
-                      let totalpembayaran = total - 10/100 * 50000;
-                      document.getElementById('demo2').innerHTML = "diskon 10% menjadi = " + totalpembayaran;
-                      document.getElementById('demo1').innerHTML = "Total Pembayaran = " + total;   
-                    </script>
-                  </div>
-                  </div>
                     <div class="header-post">
                         <div class="avatar-profile">
                             <img src="images/profile-avatar.jpg" alt="">
@@ -230,9 +211,16 @@
                         </div>
                     </div>
                     <div class="content-post">
-                        <div class="post-photo">
-                            <img src="images/post-content.jpg" alt="">
-                        </div>
+                      <div id="card-task">
+                        <span><Strong>Menu Takjil</Strong></span>
+                        <ol>
+                          <li><strong>Gohyong Ayam:</strong> Rp10000</li>
+                          <li><strong>Takoyaki:</strong> Rp25000</li>
+                          <li><strong>Dimsum:</strong> Rp15000</li>
+                        </ol>
+                        <p id="demo1"></p>
+                        <p id="demo2"></p>
+                      </div>
                     </div>
                     <div class="footer-post">
                         <div class="post-btn">
@@ -425,5 +413,6 @@
     <script>
       feather.replace();
     </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
