@@ -1,75 +1,74 @@
 //Tugas 4
-let mnhrg = {
-  nasipecel: { 
-    nama1: "Nasi Pecel",
+const mnhrg = [
+  { nama1: "Nasi Pecel",
     harga1: 10000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"], 
-    level:["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-  nasijagung: { 
-    nama1:"Nasi Jagung", 
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+  { nama1:"Nasi Jagung", 
     harga1: 25000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"],
-    level: ["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-  nasiayam: { 
-    nama1:"Nasi Ayam", 
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+  { nama1:"Nasi Ayam", 
     harga1: 15000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"],
-    level:["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-  nasikrawu: { 
-    nama1:"Nasi Krawu", 
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+  { nama1:"Nasi Krawu", 
     harga1: 12000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"], 
-    level:["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-  nasirendang: { 
-    nama1:"Nasi Rendang", 
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+  { nama1:"Nasi Rendang", 
     harga1: 15000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"],  
-    level:["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-  nasilele: { 
-    nama1:"Nasi Lele", 
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+  { nama1:"Nasi Lele", 
     harga1: 13000, 
-    varian:["Pedas Banget", "Pedas", "Pedas Original"],   
-    level:["Lvl 10","Lvl 9","Lvl 8","Lvl 7","Lvl 6","Lvl 5","Lvl 4","Lvl 3","Lvl 2","Lvl 1"]
-  },
-};
-mnhrg.nasipecel.promo = 5000;
-const pesanan = ["nasipecel","nasijagung","nasirendang"];
+    varian:["Pedas Banget", "Pedas", "Pedas Original"]},
+];
+const level = [1,2,3,4,5,6,7,8,9,10];
+
 let totalB = 0;
-for (const i of pesanan) {
-  totalB += mnhrg[i].harga1;
-  if (mnhrg[i].promo) {
-    totalB -= mnhrg[i].promo;
+let member = true;
+let mnhrgB = "";
+
+for (let c = 0; c < mnhrg.length; c++) {
+  if (mnhrg[c].nama1 !== "Nasi Pecel" || (mnhrg[c].nama1 === "Nasi Pecel" && member)) {
+    mnhrgB += `<li>${mnhrg[c].nama1}: Rp ${mnhrg[c].harga1} Varian: ${mnhrg[c].varian.join(',')}</li>`;
   }
 }
-const member = true;
-if (member) {
-  let diskonB = 0.1 * totalB;
-  let pajak = 0.11 * totalB;
-  totalbayarB = totalB - diskonB + pajak;
-}
-document.getElementById("diskon").innerHTML = "Diskon: Rp " + diskonB;
-document.getElementById("pajak").innerHTML = "Pajak: Rp ";
-document.getElementById("bayar").innerHTML = "Total Bayar: Rp " + totalbayarB;
-/*
-let totalB = 0;
-let menuB = "";
-for (let i = 0; i < mnhrg.length; i++) {
-menuB += `<li>${mnhrg[i].nama1}: Rp ${mnhrg[i].harga1}</li>`;
-totalB += mnhrg[i].harga1;
-}
-let diskonB = 0.1 * totalB;
-let totalpembayaranB = totalB - diskonB;
 
-document.getElementById("menuB").innerHTML = menuB;
-document.getElementById("d16").innerHTML = "Total = Rp " + totalB;
-document.getElementById("d17").innerHTML = "Total Diskon = Rp " + diskonB;
-document.getElementById("d18").innerHTML = "Total Pembayaran = Rp " + totalpembayaranB;
-*/
+
+const pesanan = ["Nasi Pecel","Nasi Jagung","Nasi Rendang"];
+let pesan = "";
+for (let d = 0;d < mnhrg.length; d++) {
+  if(pesanan.includes(mnhrg[d].nama1)) {
+    let variant = mnhrg[d].varian[1];
+    let lvl = "";
+    if (mnhrg[d].nama1 === "Nasi Jagung") {
+      lvl = level[9];
+      variant = "Pedas banget";
+    }else if (mnhrg[d].nama1 === "Nasi Rendang") {
+      variant = "Pedas";
+    }else if (mnhrg[d].nama1 === "Nasi Pecel") {
+      if(member) {
+        totalB += 5000;
+        pesan += `<li>Nasi Pecel: Rp 5000 (PROMO) Varian: ${variant}</li>`;
+      }
+    }
+    if(mnhrg[d].nama1 === "Nasi Jagung" || mnhrg[d].nama1 === "Nasi Rendang") {
+      totalB += mnhrg[d].harga1;
+      pesan += `<li>${mnhrg[d].nama1}: Rp ${mnhrg[d].harga1} Varian: ${variant} ${lvl > 0 ? `+ Level ${lvl}` : ""}</li>`;
+    }
+  }
+}
+let disc = 0.1;
+let pajak = 0.11;
+let totalbayarB= totalB;
+
+if (member) {
+  totalbayarB = totalB - (totalB * disc) + (totalB * pajak);
+} else {
+  totalbayarB = totalB;
+}
+document.getElementById("m1").innerHTML = mnhrgB;
+document.getElementById("p1").innerHTML = pesan;
+document.getElementById("pjkdsk").innerHTML = "Pajak = 11% <br> Diskon = 10%" ;
+document.getElementById("t1").innerHTML = "Total yang Harus Dibayar = Rp" + `${totalbayarB}`;
+
 
 /* TUGAS 3 Object */
 let menuharga = [
