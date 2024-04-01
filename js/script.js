@@ -1,3 +1,50 @@
+//Tugas 5
+const students = [
+  {name: "Rafi", score: 85, figma: false},
+  {name: "Andre", score: 100, figma: true},
+  {name: "Yardan", score: 77, figma: false},
+  {name: "Taufiq", score: 92, figma: true},
+  {name: "Nathan", score: 55, figma: false}
+];
+
+const gradeRules = {
+  "A": {min: 80, max: 100},
+  "B": {min: 70, max: 79},
+  "C": {min: 60, max: 69},
+  "D": {min: 50, max: 59},
+  "E": {min: 0, max: 49}
+};
+
+const calculateGrade = score => {
+  if (score > 100) {
+    return "A";
+  }
+  for (const grade in gradeRules) {
+    if (score >= gradeRules[grade].min && score <= gradeRules[grade].max) {
+      return grade;
+    }
+  }
+};
+
+const gradeStudents = students => {
+  const grades = [];
+  for (const student of students) {
+    if (student.figma) {
+      student.score += 10;
+    }
+    const grade = calculateGrade(student.score);
+    grades.push(`${student.name} Mendapatkan Nilai ${grade}${student.score > 100 ? "+": ""}`);
+  }
+  return grades;
+};
+
+const displayGrades = grades => {
+  const gradesDiv = document.getElementById("grades");
+  gradesDiv.innerHTML = grades.join("<br>");
+};
+
+const grades = gradeStudents(students);
+displayGrades(grades);
 //Tugas 4
 const mnhrg = [
   { nama1: "Nasi Pecel",
@@ -32,12 +79,12 @@ for (let c = 0; c < mnhrg.length; c++) {
 }
 
 
-const pesanan = ["Nasi Pecel","Nasi Jagung","Nasi Rendang"];
+const pesanan = [mnhrg[0].nama1 , mnhrg[1].nama1 , mnhrg[4].nama1];
 let pesan = "";
 for (let d = 0;d < mnhrg.length; d++) {
   if(pesanan.includes(mnhrg[d].nama1)) {
     let variant = mnhrg[d].varian[1];
-    let lvl = "";
+    let lvl = 0;
     if (mnhrg[d].nama1 === "Nasi Jagung") {
       lvl = level[9];
       variant = "Pedas banget";
@@ -64,8 +111,8 @@ if (member) {
 } else {
   totalbayarB = totalB;
 }
-document.getElementById("m1").innerHTML = mnhrgB;
-document.getElementById("p1").innerHTML = pesan;
+document.getElementById("m1").innerHTML = "Menu<br>" + mnhrgB;
+document.getElementById("p1").innerHTML = "Pesanan<br>" + pesan;
 document.getElementById("pjkdsk").innerHTML = "Pajak = 11% <br> Diskon = 10%" ;
 document.getElementById("t1").innerHTML = "Total yang Harus Dibayar = Rp" + `${totalbayarB}`;
 
