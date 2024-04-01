@@ -1,50 +1,37 @@
 //Tugas 5
-const students = [
-  {name: "Rafi", score: 85, figma: false},
-  {name: "Andre", score: 100, figma: true},
-  {name: "Yardan", score: 77, figma: false},
-  {name: "Taufiq", score: 92, figma: true},
-  {name: "Nathan", score: 55, figma: false}
+const mhs = [
+  {namamhs: "Rafi", nilai: 85, figma: false},
+  {namamhs: "Andre", nilai: 100, figma: true},
+  {namamhs: "Yardan", nilai: 77, figma: false},
+  {namamhs: "Taufiq", nilai: 92, figma: true},
+  {namamhs: "Nathan", nilai: 55, figma: false}
 ];
 
-const gradeRules = {
-  "A": {min: 80, max: 100},
-  "B": {min: 70, max: 79},
-  "C": {min: 60, max: 69},
-  "D": {min: 50, max: 59},
-  "E": {min: 0, max: 49}
-};
+let score = 0;
+let grade = "";
 
-const calculateGrade = score => {
+for (let i = 0; i < mhs.length; i++) {
+  score = mhs[i].nilai;
+  if (mhs[i].figma) {
+    score += 10;
+  }
+
   if (score > 100) {
-    return "A";
+    grade = "A+";
+  }else if (score >= 80 && score <= 100) {
+    grade = "A";
+  }else if (score >= 70 && score <= 80) {
+    grade = "B";
+  }else if (score >= 60 && score <= 70) {
+    grade = "C";
+  }else if (score >= 50 && score <= 60) {
+    grade = "D";
   }
-  for (const grade in gradeRules) {
-    if (score >= gradeRules[grade].min && score <= gradeRules[grade].max) {
-      return grade;
-    }
+  else {
+    grade = "E";
   }
-};
-
-const gradeStudents = students => {
-  const grades = [];
-  for (const student of students) {
-    if (student.figma) {
-      student.score += 10;
-    }
-    const grade = calculateGrade(student.score);
-    grades.push(`${student.name} Mendapatkan Nilai ${grade}${student.score > 100 ? "+": ""}`);
-  }
-  return grades;
-};
-
-const displayGrades = grades => {
-  const gradesDiv = document.getElementById("grades");
-  gradesDiv.innerHTML = grades.join("<br>");
-};
-
-const grades = gradeStudents(students);
-displayGrades(grades);
+  document.getElementById("mahasiswa").innerHTML +=`<li>${mhs[i].namamhs}:<br> Nilai= ${mhs[i].nilai}  Grade= ${grade}</li>`;
+}
 //Tugas 4
 const mnhrg = [
   { nama1: "Nasi Pecel",
